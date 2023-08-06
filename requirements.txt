@@ -1,0 +1,5 @@
+Django>=4.2.3,<5
+environs[django]>=9.5.0,<10
+psycopg2-binary>=2.9.7,<3
+# djangorestframework>=3.14.0,<4
+# django-cors-headers>=4.2.0,<5

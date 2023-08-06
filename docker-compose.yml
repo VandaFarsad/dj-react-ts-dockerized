@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres-service
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U postgres -d postgres"
+      interval: 3s
+      timeout: 5s
+      retries: 5
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: portfolio-service
+    env_file: .env.local
+    volumes:
+      - /var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    restart: always
+
+  django-react-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: django-react-frontend
+    image: django-react-frontend
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 3000:3000
+
+  django-react-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: bash /code/docker-entrypoint.local.sh
+    container_name: django-react-backend
+    image: django-react-backend
+    volumes:
+      - .:/code
+      - ../django-react-backend-logs:/logs
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      - django-react-frontend
+    env_file: .env.local
+
