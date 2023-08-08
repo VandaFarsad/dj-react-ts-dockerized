@@ -3,4 +3,6 @@
 set -e
 
 echo "Initializing Dev environment..."
+npm install
+npm run build
 npm start

@@ -27,9 +27,14 @@ services:
     container_name: django-react-frontend
     image: django-react-frontend
     volumes:
-      - ./frontend/src:/frontend/src
+      - ./frontend:/frontend
     ports:
       - 3000:3000
+    healthcheck:
+      test: "curl -f http://localhost:3000"
+      interval: 3s
+      timeout: 5s
+      retries: 5
 
   django-react-backend:
     build:
@@ -43,9 +48,9 @@ services:
       - ../django-react-backend-logs:/logs
     ports:
       - 8000:8000
-    depends_on:
-      postgres: 
-        condition: service_healthy
+    # depends_on:
+    #   django-react-frontend:
+    #     condition: service_completed_successfully
     env_file: .env.local
 
 networks:
