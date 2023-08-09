@@ -22,19 +22,13 @@ services:
   django-react-frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
-    entrypoint: bash /frontend/docker-entrypoint.local.sh
+      target: development
     container_name: django-react-frontend
     image: django-react-frontend
     volumes:
-      - ./frontend:/frontend
+      - ./frontend/src:/code/src:ro
     ports:
       - 3000:3000
-    healthcheck:
-      test: "curl -f http://localhost:3000"
-      interval: 3s
-      timeout: 5s
-      retries: 5
 
   django-react-backend:
     build:
@@ -48,9 +42,6 @@ services:
       - ../django-react-backend-logs:/logs
     ports:
       - 8000:8000
-    # depends_on:
-    #   django-react-frontend:
-    #     condition: service_completed_successfully
     env_file: .env.local
 
 networks:
