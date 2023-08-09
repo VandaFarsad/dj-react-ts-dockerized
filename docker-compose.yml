@@ -19,16 +19,16 @@ services:
       - "5432:5432"
     restart: always
 
-  django-react-backend:
+  django-react-service:
     build:
       context: .
       dockerfile: Dockerfile
     entrypoint: bash /code/docker-entrypoint.local.sh
-    container_name: django-react-backend
-    image: django-react-backend
+    container_name: django-react-service
+    image: django-react-service
     volumes:
       - .:/code
-      - ../django-react-backend-logs:/logs
+      - ../django-react-service-logs:/logs
     ports:
       - 8000:8000
     depends_on:
