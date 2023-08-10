@@ -23,7 +23,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: bash /code/docker-entrypoint.sh
     container_name: django-react-service
     image: django-react-service
     volumes:
