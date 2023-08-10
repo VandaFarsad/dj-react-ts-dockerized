@@ -1,5 +1,5 @@
 # REACT 
-FROM node:lts AS build
+FROM node:16-slim AS build
 
 WORKDIR /code/frontend
 COPY /frontend/package*.json .
