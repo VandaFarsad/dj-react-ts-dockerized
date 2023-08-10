@@ -19,35 +19,22 @@ services:
       - "5432:5432"
     restart: always
 
-  django-react-service-server:
+  django-react-service:
     build:
       context: .
       dockerfile: Dockerfile
-      target: development
-    entrypoint: bash /code/docker-entrypoint.local.sh
-    container_name: django-react-service-server
-    image: django-react-service-server
+    entrypoint: bash /code/docker-entrypoint.sh
+    container_name: django-react-service
+    image: django-react-service
     volumes:
       - .:/code
-      - ../django-react-service-server-logs:/logs
+      - ../django-react-service-logs:/logs
     ports:
       - 8000:8000
     depends_on:
       postgres:
         condition: service_healthy
     env_file: .env.local
-
-  django-react-service-client:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.local
-    container_name: django-react-service-client
-    image: django-react-service-client
-    volumes:
-      - ./frontend:/code
-      - ./frontend/node_modules:/code/node_modules
-    ports:
-      - 3000:3000
 
 networks:
   default:
