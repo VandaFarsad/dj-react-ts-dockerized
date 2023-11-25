@@ -1,13 +1,14 @@
-FROM node:18-slim
+FROM node:18-alpine AS base
 
-WORKDIR /frontend
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
+COPY package*.json .
+RUN npm ci
 
-COPY package.json .
-
-RUN npm install
-
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-EXPOSE 3000
-
-ENTRYPOINT ["npm", "run", "build"]
+RUN npm run build

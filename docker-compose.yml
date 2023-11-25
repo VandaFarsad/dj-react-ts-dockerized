@@ -11,7 +11,7 @@ services:
     image: postgres:14-alpine
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_DB: portfolio-service
+      POSTGRES_DB: django-react-service
     env_file: .env.local
     volumes:
       - /var/lib/postgresql/data/
@@ -23,18 +23,15 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    entrypoint: bash /frontend/docker-entrypoint.local.sh
+      target: deps
     container_name: django-react-frontend
     image: django-react-frontend
     volumes:
-      - ./frontend:/frontend
+      - ./frontend:/app
+      - /app/node_modules
     ports:
       - 3000:3000
-    healthcheck:
-      test: "curl -f http://localhost:3000"
-      interval: 3s
-      timeout: 5s
-      retries: 5
+    command: npm start
 
   django-react-backend:
     build:
@@ -48,7 +45,6 @@ services:
       - ../django-react-backend-logs:/logs
     ports:
       - 8000:8000
-    # depends_on:
-    #   django-react-frontend:
-    #     condition: service_completed_successfully
     env_file: .env.local
+    depends_on:
+      - postgres
