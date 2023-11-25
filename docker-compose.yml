@@ -52,13 +52,3 @@ services:
     #   django-react-frontend:
     #     condition: service_completed_successfully
     env_file: .env.local
-
-networks:
-  default:
-    name: django-react-service
-    driver: "bridge"
-    ipam:
-      driver: default
-      config:
-        - subnet: 100.100.106.0/24  # you may need to change ip addresses, e.g. 100.100.107.0/24 and so on
-          gateway: 100.100.106.1
