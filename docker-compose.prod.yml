@@ -20,24 +20,19 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    entrypoint: bash /frontend/docker-entrypoint.local.sh
     container_name: django-react-frontend
     image: django-react-frontend
     volumes:
-      - ./frontend:/frontend
+      - ./frontend:/app
+      - /app/node_modules
     ports:
       - 3000:3000
-    healthcheck:
-      test: "curl -f http://localhost:3000"
-      interval: 3s
-      timeout: 5s
-      retries: 5
 
   django-react-backend:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: bash /code/docker-entrypoint.local.sh
+    entrypoint: bash /code/docker-entrypoint.sh
     container_name: django-react-backend
     image: django-react-backend
     volumes:
