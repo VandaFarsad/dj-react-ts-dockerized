@@ -15,6 +15,9 @@ services:
       - media_volume:/code/portfolio/data/media
       - nginx_secrets:/etc/letsencrypt
       - ./nginx/user_conf.d:/etc/nginx/user_conf.d
+    depends_on:
+      - django-react-backend
+      - django-react-frontend
 
   django-react-frontend:
     build:

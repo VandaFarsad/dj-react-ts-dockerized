@@ -4,6 +4,8 @@ set -e
 
 echo "Initializing..."
 
+mkdir -p /code/frontend/build/static
+
 echo "Running migrations..."
 python manage.py migrate
 
