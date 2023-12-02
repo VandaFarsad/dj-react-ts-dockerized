@@ -3,7 +3,7 @@ version: "3.9"
 services:
   nginx:
     image: jonasal/nginx-certbot:latest
-    container_name: nginx-service
+    container_name: django-react-nginx
     restart: unless-stopped
     env_file:
       - ./nginx/nginx-certbot.env
