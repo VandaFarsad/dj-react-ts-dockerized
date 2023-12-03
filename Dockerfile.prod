@@ -17,7 +17,7 @@ FROM python:3.11-slim
 WORKDIR /code
 COPY ./requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-COPY --from=builder /app/build ./frontend/build
 COPY . .
+COPY --from=builder /app/build ./frontend/build
 EXPOSE 8000
 ENTRYPOINT ["bash", "/code/docker-entrypoint.prod.sh"]
