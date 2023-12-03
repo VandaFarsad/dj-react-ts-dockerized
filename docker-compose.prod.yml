@@ -17,7 +17,6 @@ services:
       - ./nginx/user_conf.d:/etc/nginx/user_conf.d
     depends_on:
       - django-react-backend
-      - django-react-frontend
 
   django-react-backend:
     build:
