@@ -19,18 +19,6 @@ services:
       - django-react-backend
       - django-react-frontend
 
-  django-react-frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: django-react-frontend
-    image: django-react-frontend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    ports:
-      - 3000:3000
-
   django-react-backend:
     build:
       context: .
