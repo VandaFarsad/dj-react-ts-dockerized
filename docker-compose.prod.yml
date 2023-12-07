@@ -26,7 +26,6 @@ services:
     container_name: django-react-backend
     image: django-react-backend
     volumes:
-      - .:/code
       - ../django-react-backend-logs:/logs
       - static_volume:/code/static
       - media_volume:/code/media
