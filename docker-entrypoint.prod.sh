@@ -3,6 +3,7 @@
 set -e
 
 echo "Initializing..."
+python manage.py wait_for_db
 
 echo "Running migrations..."
 python manage.py migrate
