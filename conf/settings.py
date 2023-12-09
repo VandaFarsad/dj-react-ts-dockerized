@@ -21,7 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load enviroment variables
 env = Env()
 
-env.read_env(str(BASE_DIR / ".env.local"), recurse=False)
+if (BASE_DIR / ".env").exists():
+    env.read_env(str(BASE_DIR / ".env"), recurse=False)
+else:
+    env.read_env(str(BASE_DIR / ".env.local"), recurse=False)
 
 
 # Quick-start development settings - unsuitable for production

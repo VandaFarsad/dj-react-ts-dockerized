@@ -39,11 +39,17 @@ For **production**, use the following command:
 docker compose -f docker-compose.prod.yml up
 ```
 
+**Create an environment file for production deployment:**
+
+In order to deploy the application in production, create a `.env` file in the root directory. You can use [.env.local](.env.local) as a reference.
+
 ## Nginx in Production
 
 For production, the Nginx service is used to serve the application. The Nginx configuration can be found in the [nginx](./nginx) directory.
 
 Here is the GitHub repository for the Nginx image used in production: [JonasAlfredsson/docker-nginx-certbot](https://github.com/JonasAlfredsson/docker-nginx-certbot)
+
+```
 
 ## Configuration
 
@@ -61,3 +67,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 - Thanks to ChatGPT, for generating this README ;-)
 
 Happy coding!
+```
