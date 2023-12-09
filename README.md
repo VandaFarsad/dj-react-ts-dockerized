@@ -58,5 +58,6 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## Acknowledgments
 
 - Thanks to Jonas Alfredsson for the Nginx and Certbot Docker image. [GitHub Repository](https://github.com/JonasAlfredsson/docker-nginx-certbot)
+- Thanks to ChatGPT, for generating this README ;-)
 
 Happy coding!
