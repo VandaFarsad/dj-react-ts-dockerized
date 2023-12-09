@@ -49,8 +49,6 @@ For production, the Nginx service is used to serve the application. The Nginx co
 
 Here is the GitHub repository for the Nginx image used in production: [JonasAlfredsson/docker-nginx-certbot](https://github.com/JonasAlfredsson/docker-nginx-certbot)
 
-```
-
 ## Configuration
 
 - Backend configuration files can be found in the `main` directory.
@@ -65,6 +63,3 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 - Thanks to Jonas Alfredsson for the Nginx and Certbot Docker image. [GitHub Repository](https://github.com/JonasAlfredsson/docker-nginx-certbot)
 - Thanks to ChatGPT, for generating this README ;-)
-
-Happy coding!
-```
