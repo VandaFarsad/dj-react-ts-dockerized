@@ -41,7 +41,7 @@ docker compose -f docker-compose.prod.yml up
 
 ## Nginx in Production
 
-For production, the Nginx service is used to serve the application. The Nginx configuration can be found in the [nginx](./nginx/user_conf.d/server.conf) directory.
+For production, the Nginx service is used to serve the application. The Nginx configuration can be found in the [nginx](./nginx) directory.
 
 Here is the GitHub repository for the Nginx image used in production: [JonasAlfredsson/docker-nginx-certbot](https://github.com/JonasAlfredsson/docker-nginx-certbot)
 
