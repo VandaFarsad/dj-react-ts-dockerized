@@ -68,7 +68,11 @@ ROOT_URLCONF = "conf.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "frontend/build"],
+        "DIRS": [
+            BASE_DIR / "frontend/build",
+            # For favicon.ico and manifest.json
+            BASE_DIR / "frontend/public",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

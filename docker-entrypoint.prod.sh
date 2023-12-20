@@ -2,6 +2,14 @@
 
 set -e
 
+echo "Starting docker-entrypoint.pord.sh"
+
+echo "Modifying index.html to add /static to all hrefs that do not start with /static"
+input_file="frontend/build/index.html"
+grep -Po 'href="/\K(?!static)[^"]*' $input_file | while read -r line ; do
+    sed -i "s|href=\"/$line\"|href=\"/static/$line\"|g" $input_file
+done
+
 echo "Initializing..."
 python manage.py wait_for_db
 
